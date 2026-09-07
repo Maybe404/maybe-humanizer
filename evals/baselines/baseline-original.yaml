@@ -1,0 +1,234 @@
+# 原版基线：前一版 skill，commit 37e96bf，未修契约
+# 四类计数定义见 evals/baselines/README.md
+run:
+  target: 前一版 skill，skills/maybe-humanizer/
+  repo: github.com/Maybe404/skill
+  commit: 37e96bf
+  model: claude-sonnet-5
+  temperature: 不可控（claude -p 不能设温度）
+  invocation: |-
+    printf '%s' "<request>\n\n<body>" | env -u CLAUDECODE claude -p \
+      --model claude-sonnet-5 --allowedTools "Read,Grep,Glob,Skill"
+    工作目录为一个空项目，.claude/skills/maybe-humanizer 软链到该 commit 的 skill 目录。
+  date: 2026-09-07
+  raw_outputs: evals/runs/baseline-original/case-<id>.md（未入库，evals/runs/ 在 .gitignore）
+  scoring: 机械断言按用例字段人工核对，judge_rubric 人工判定
+
+totals:
+  cases: 17
+  clean: 5          # 第 5、6、14、16、26 条四类全零
+  missed_detection: 2
+  missed_handling: 4
+  wrong_edit: 11
+  out_of_scope: 7
+
+cases:
+  - id: 1
+    clean: false
+    missed_detection: 0
+    missed_handling: 0
+    wrong_edit: 0
+    out_of_scope: 4
+    notes: |-
+      minimal_edit 档。judge_rubric 只允许标点和排版改动或原样返回，基线做了四处词汇改动：
+      「被叫起来」→「被拉起来」、「是那个老问题」→「还是那个老问题」、两处删主语「我」。
+      事实与声口未损，must_preserve 全中，纯粹是执行强度越界。
+
+  - id: 2
+    clean: false
+    missed_detection: 0
+    missed_handling: 0
+    wrong_edit: 0
+    out_of_scope: 2
+    notes: |-
+      落审稿档，rubric 允许。但两处越界：
+      1. 开头给出「判定：真人文本」——skill 的 description 明写不判断一段文字是不是 AI 写的。
+      2. 建议超出标点级：要求统一「服务发现」与「服务网格」的术语、建议拆句。
+      未实际改动正文，must_preserve 不适用。
+
+  - id: 5
+    clean: true
+    missed_detection: 0
+    missed_handling: 0
+    wrong_edit: 0
+    out_of_scope: 0
+    notes: |-
+      逐字项全中（日期、12 个月、10/15 天、403、hr-tool 命令、跨季度作废、可能、尚未确认）。
+      限定「仅总部在职满 12 个月的正式员工」仍在被限定内容之前，情态未被改成确定。
+      结尾提了一个年假与调休口径不一致的事实问题但没有替作者改，符合契约。
+
+  - id: 6
+    clean: true
+    missed_detection: 0
+    missed_handling: 0
+    wrong_edit: 0
+    out_of_scope: 0
+    notes: |-
+      must_remove 七项全清，逐字项全中，两句在 2 到 4 的区间内。
+      「我们」是原文自带（原文即「我们将 p99 延迟……」），不计 first_person 新增。
+
+  - id: 9
+    clean: false
+    missed_detection: 2
+    missed_handling: 0
+    wrong_edit: 1
+    out_of_scope: 0
+    notes: |-
+      漏检两个黑话词：「闭环」「底层逻辑」原样留在改写稿里（「数据闭环打通没有、底层逻辑理顺没有」），
+      改动说明里也没提，属漏检不是漏处理。
+      误改一处：rubric 明写套话不得换成另一批套话，基线把「夯实基础、行稳致远」换成
+      「这才是支撑业务增长的根基」「基础打牢了，后面的增长才有底气」，是同一批空话换皮。
+      正确的部分：指出了原文缺具体数据和案例、没有替它补细节，没有凭空补数字。
+
+  - id: 10
+    clean: false
+    missed_detection: 0
+    missed_handling: 1
+    wrong_edit: 0
+    out_of_scope: 0
+    notes: |-
+      漏处理一处：识别出「在这个日新月异、瞬息万变的时代，技术的浪潮波澜壮阔、势不可挡」是纯场面话，
+      但按 bounded 把它放进「待确认删除清单」推给用户，没有删。短产品页文案落 bounded 档偏保守。
+      正确的部分：🚀 与逐词加粗清掉，两处机械设问改成陈述，四字格没换成另一批四字格，
+      没编性能数字，并指出需要作者补具体卖点。
+
+  - id: 13
+    clean: false
+    missed_detection: 0
+    missed_handling: 1
+    wrong_edit: 0
+    out_of_scope: 0
+    notes: |-
+      审稿判定正确（命中 AI 高频写作模式），没出改写后的正文，没给身份结论和概率分，
+      没有以样本过短为由拒绝。
+      漏处理一处：rubric 要求每条证据带规则 id、原句、改法，四条证据都给了 id 和原句，改法一条都没给。
+      机械断言 forbidden_in_report 的 "分" 会误报——命中的是「不打 AI 概率分」这句拒绝给分的声明本身，
+      属断言过钝，不计入四类。同一问题也影响 "AI 写的" 这类子串断言，待阶段 2 收紧断言写法。
+
+  - id: 14
+    clean: true
+    missed_detection: 0
+    missed_handling: 0
+    wrong_edit: 0
+    out_of_scope: 0
+    notes: |-
+      校对档执行准确：只把「测试环景」改成「测试环境」，三句一字未动，没调句序、没合并、没删「不过」。
+
+  - id: 15
+    clean: false
+    missed_detection: 0
+    missed_handling: 1
+    wrong_edit: 1
+    out_of_scope: 0
+    notes: |-
+      误改一处逐字项：must_preserve 里的「不包含用户手动触发的重试」被改写成
+      「用户手动触发的重试不算在里面」。语义口径没丢，但该项按逐字保护登记。
+      漏处理一处：must_remove 的「需要注意的是」改成了「有一点需要注意」，是同义变体，不是清除。
+      字段名与取值（X-Request-Id、status、pending/running/failed、error_code、retry_count、
+      config、key、log_level=info）全部原样，没有译成中文或改大小写。
+
+  - id: 16
+    clean: true
+    missed_detection: 0
+    missed_handling: 0
+    wrong_edit: 0
+    out_of_scope: 0
+    notes: |-
+      两条 kubectl 命令逐字符未变（含单引号、花括号、双连字符），三处套话全清，
+      确认副本数一步仍在回滚命令之前，--to-revision 的三个限定条件全在。
+      把命令提成代码块属排版，已在输出里声明按 bounded 处理。
+
+  - id: 17
+    clean: false
+    missed_detection: 0
+    missed_handling: 1
+    wrong_edit: 0
+    out_of_scope: 0
+    notes: |-
+      漏处理一处：must_remove 的「与此同时」原样留着。
+      两条报错原文逐字未动、未翻译未合并，214 次没写成「多次」。
+      用例自身有矛盾待修：must_remove 列了「在一定程度上」，judge_rubric 却要求原文带保留的判断
+      不得写成确定结论。基线保留了它并在说明里写明是刻意保留，按 rubric 是对的，按 must_remove 是漏处理。
+      本条按 rubric 判，不计入四类，用例矛盾另行修正。
+
+  - id: 18
+    clean: false
+    missed_detection: 0
+    missed_handling: 0
+    wrong_edit: 2
+    out_of_scope: 0
+    notes: |-
+      误改两处，都是新增原文没有的内容：
+      1. 「改完没有恢复」→「改完忘了改回去」，凭空补了「忘了」这个心理状态，原文只说没恢复。
+      2. 新增「偏巧业务组当天上线……」，「偏巧」是原文没有的巧合评价。
+      责任主体没有互换或隐去，forbidden_in_output 三项都没出现，37 笔与三次都在。
+
+  - id: 19
+    clean: false
+    missed_detection: 0
+    missed_handling: 0
+    wrong_edit: 1
+    out_of_scope: 1
+    notes: |-
+      越界一处：polish 档，rubric 明写不得重排段落，基线把整段拆成四条并列列表。
+      误改一处逐字项：「可能存在兼容问题」被写成「可能存在兼容性问题」。
+      七项（范围、条件、否定、情态、完成态、方向、强度）未变，forbidden_in_output 六项都没出现。
+
+  - id: 20
+    clean: false
+    missed_detection: 0
+    missed_handling: 0
+    wrong_edit: 2
+    out_of_scope: 0
+    notes: |-
+      误改两处：
+      1. rubric 明写删完不得补一句新的价值判断，基线删掉两句空总结后补了「效果很明显」。
+      2. 逐字项「未命中的主要是依赖升级当天的构建」被改写成「没命中的主要集中在依赖升级当天的构建」。
+      must_remove 四项全清，71% 没抹成「较高」，两句在区间内。
+
+  - id: 21
+    clean: false
+    missed_detection: 0
+    missed_handling: 0
+    wrong_edit: 1
+    out_of_scope: 0
+    notes: |-
+      bounded 执行本身很好：27 个逐字数字项全中，三处套话按句内改法处理，没合并句、没重排段落，
+      92.4% 的测量口径和会掉的限定全保留，forbidden_in_output 两项没出现。
+      误改一处，性质严重：改动说明里凭空声称「你贴过来的文字里『老类别』那处在传输中出现了一段乱码
+      （混进了西里尔字母），根据你原话里的表述改了回来」。输入里没有任何乱码或西里尔字母，
+      这是对输入事实的捏造。正文未受影响，但这类幻觉会让用户误以为自己的原稿有问题。
+
+  - id: 22
+    clean: false
+    missed_detection: 0
+    missed_handling: 0
+    wrong_edit: 3
+    out_of_scope: 0
+    notes: |-
+      in-place 档，用户明说一句都别删、句子数量要一样。句数守住了（6 句），三处套话也清了，
+      第一句按 rubric 在句内降回普通判断并保留了命题。
+      误改三处逐字项：「三处」→「三份」、「一处」→「一份」、
+      「没有出现鉴权相关的告警」→「没出现过鉴权相关的告警」。
+      in-place 档下这三处都属于不该动的位置。
+
+  - id: 26
+    clean: true
+    missed_detection: 0
+    missed_handling: 0
+    wrong_edit: 0
+    out_of_scope: 0
+    notes: |-
+      执行强度上限样本，基线原样返回并说明无需改写，四个 QPS 数字没被概括，
+      「我们认为」没改成确定，没有为句长变化重排整段。
+
+# 阶段 1 对照要用的观察
+observations:
+  - 误改是主要失效模式，12 处里 6 处是逐字项被同义改写（15、19、20、22），
+    集中在「语义没丢所以可以换个说法」这一类判断上。原型的逐字项保护应当在这几条上有直接下降证据。
+  - 越界 4 处集中在执行强度：minimal_edit 档做了词汇改动（1），polish 档重排了段落（19）。
+  - 两处新增内容（18）和一处输入事实捏造（21）是最该被核验步骤拦住的。
+  - 空话删完补一句新价值判断（20）与套话换套话（9）是同一个根问题，
+    正是 prompts/judge.md 这次收紧的边界要覆盖的。
+  - 用例 17 自身 must_remove 与 judge_rubric 矛盾，阶段 1 全量跑之前要修。
+  - 机械断言 forbidden_in_report 用子串匹配「分」「AI 写的」会误报（13），断言写法要收紧。

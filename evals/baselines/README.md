@@ -4,7 +4,7 @@
 
 | 文件 | 对象 | 状态 |
 |---|---|---|
-| `baseline-original.yaml` | 前一版 skill，commit `37e96bf`，未修契约 | 未跑 |
+| `baseline-original.yaml` | 前一版 skill，commit `37e96bf`，未修契约 | 已入库（2026-09-07，claude-sonnet-5，17 条） |
 | `baseline-fixed.yaml` | 前一版 skill，commit `991c382`（修完 04-phase0-contract-fixes.md 四处矛盾） | 未跑 |
 
 运行条件要固定并记录：模型 id、温度（`claude -p` 不能设温度，记为不可控）、prompt 版本（skill 的 commit）。每条用例按四类记：`missed_detection`（漏检）、`missed_handling`（漏处理）、`wrong_edit`（误改）、`out_of_scope`（越界）。
