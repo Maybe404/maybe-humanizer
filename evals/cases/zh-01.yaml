@@ -1,0 +1,12 @@
+id: 1
+lang: zh
+mode: rewrite
+class: minimal_edit
+request: 帮我把这段改自然点
+body: |-
+  上周三凌晨两点被叫起来，是那个老问题又犯了。我盯着日志看了四十分钟没看出名堂，最后是同事一句话点醒我：缓存键里带了时间戳。行吧。修完躺下已经四点，第二天开会我一句话都没听进去。这事我记到现在，倒不是因为多难，是因为太蠢了。
+axes: {strength: rewrite, scope: structural}
+must_preserve: ["行吧", "太蠢了", "四十分钟", "两点", "四点"]
+must_remove: []
+must_not_add: [{kind: causal_marker}]
+judge_rubric: 不得把「行吧」删掉、把最后一句改成中性表述、把段落拆成整齐的短句、补一句总结或教训。允许的改动只有标点和排版，或原样返回并说明无需改写。

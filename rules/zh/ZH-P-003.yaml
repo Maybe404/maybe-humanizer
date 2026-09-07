@@ -1,0 +1,20 @@
+id: ZH-P-003
+lang: zh
+category: pattern
+title: 序词脚手架
+criterion: 「首先……其次……再次……最后……」搭出来的骨架即命中。删掉序词看各点的顺序还成不成立；成立就说明序词没有承担顺序。
+fix: 删掉序词，让内容本身的顺序说话。确实需要分点时分点，不加序词套话。
+pass_when: 操作步骤里的「第一步」「第二步」是内容不是套话。原文明确在讲先后依赖（「先建索引，再导数据」）时保留顺序词。
+known_misses: 不带序词的机械并列查不出来。
+examples:
+  - good: 它快了三倍，服务器账单少了一半。用户没抱怨，这是头一回。
+  - bad: 首先，它提升了效率。其次，它降低了成本。最后，它改善了体验。
+    why: 三个序词撑着三句空话，删掉序词后三点谁先谁后都一样。
+detector:
+  kind: lexicon
+  lexicon: ZH-P-003
+severity: 2
+frequency: null
+source:
+  decision: adopted
+  from: [patterns-zh.md]

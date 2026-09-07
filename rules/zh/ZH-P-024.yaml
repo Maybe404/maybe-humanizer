@@ -1,0 +1,20 @@
+id: ZH-P-024
+lang: zh
+category: pattern
+title: 中文二元对比骨架
+criterion: 「不是 X，而是 Y」「与其 X，不如 Y」不作默认的对比写法。判据是前半句被否定的那个主张在原文里有没有出现过；没出现过即命中。
+fix: 多数情况删掉前半句直接说 Y，或者改用转折、递进。
+pass_when: 前半句在回应原文里真实存在、点名的主张时保留。作者有意的自嘲、口语句按声口保留。
+known_misses: 同一骨架反复到能预判下一句形状的那一层归 ZH-M-005。
+examples:
+  - good: 卡住的是排期。
+  - bad: 这不是技术问题，而是排期问题。
+    why: 没有人主张过这是技术问题，前半句是自己造出来的对立面。
+detector:
+  kind: regex
+  regex: "不是.{1,30}而是|与其.{1,30}不如"
+severity: 3
+frequency: null
+source:
+  decision: adopted
+  from: [patterns-zh.md]

@@ -1,0 +1,18 @@
+id: ALL-PROT-023
+lang: both
+category: protection
+title: 条件关系七项逐项可追溯
+criterion: 七项逐项核对：范围、条件、否定、情态、完成态、方向、强度。每一项在改写稿里都要找得回来，一项都不得放宽、收窄或翻转。先从原文到改写稿确认没丢，再从改写稿回到原文确认每个关系都能回指依据。
+fix: 措辞可以换，含义不能变。「完成了三个模块中的两个」写成「三个模块做完了两个」合格，写成「模块开发已推进」失真。
+pass_when: 等义改写不算命中。
+known_misses: 七项都是句内关系，跨句和跨步骤的顺序关系按 ALL-PROT-024 判。
+examples:
+  - good: 原文「2.3 之后的版本不支持」，改写后仍限定在 2.3 之后。
+  - bad: 改成「旧版本均不支持」。
+    why: 有版本边界的否定被换成了指向相反的无边界否定，范围和方向两项都没保住。
+detector: null
+severity: 1
+frequency: null
+source:
+  decision: adopted
+  from: [protection.md]

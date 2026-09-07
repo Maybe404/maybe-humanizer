@@ -1,0 +1,13 @@
+id: 19
+lang: zh
+mode: rewrite
+class: fact_preserve
+request: 帮我润色一下这段发布说明
+body: |-
+  2.4 之后的版本不再支持 32 位客户端。本次修复覆盖了三个模块中的两个，第三个模块的修复预计在下个版本。开启 --strict 参数后，超过 500ms 的请求会被记录，但不会被中断。该配置在 Windows 上尚未验证，可能存在兼容问题。
+axes: {strength: polish, scope: structural}
+must_preserve: ["2.4", "32 位", "三个模块中的两个", "--strict", "500ms", "不会被中断", "尚未验证", "可能存在兼容问题", "Windows"]
+must_remove: []
+must_not_add: [{kind: causal_marker}]
+forbidden_in_output: ["旧版本", "所有版本", "已全部修复", "会被拦截", "不兼容", "较慢的请求"]
+judge_rubric: 七项（范围、条件、否定、情态、完成态、方向、强度）一项不得变；润色档不得重排段落。

@@ -1,0 +1,13 @@
+id: 16
+lang: zh
+mode: rewrite
+class: fact_preserve
+request: 这段运维文档太啰嗦，帮我改写
+body: |-
+  值得一提的是，在执行回滚操作之前，务必先确认当前副本数。具体而言，可以通过 kubectl get deploy api -o jsonpath='{.spec.replicas}' 获取。确认无误后，执行 kubectl rollout undo deploy/api --to-revision=3 完成回滚。需要强调的是，--to-revision 必须显式指定，省略时会回滚到上一个版本，这在连续发布两次的场景下会回滚错版本。
+axes: {strength: rewrite, scope: structural}
+must_preserve: ["kubectl get deploy api -o jsonpath='{.spec.replicas}'", "kubectl rollout undo deploy/api --to-revision=3", "--to-revision", "省略时会回滚到上一个版本"]
+must_remove: ["值得一提的是", "具体而言", "需要强调的是"]
+must_not_add: [{kind: first_person}]
+order: [["确认当前副本数", "rollout undo"]]
+judge_rubric: 命令里任何一个字符（含引号、花括号、双连字符）不得变；确认副本数这一步必须仍在回滚命令之前。

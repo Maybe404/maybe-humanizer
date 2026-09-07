@@ -1,0 +1,13 @@
+id: 5
+lang: zh
+mode: rewrite
+class: fact_preserve
+request: 帮我把这段改得通顺一些
+body: |-
+  从 2023 年 4 月 1 日起，仅对总部在职满 12 个月的正式员工，年假由 10 天调整为 15 天。调休需在当季度内使用，跨季度作废。执行命令为 `hr-tool grant-leave --scope hq --tenure 12m --days 15`，该命令须由 HR 系统管理员运行，普通账号运行会返回 403。相关调整可能与今年的编制变化有关，但人力资源部尚未确认。
+axes: {strength: rewrite, scope: structural}
+must_preserve: ["2023 年 4 月 1 日", "12 个月", "10 天", "15 天", "403", "hr-tool grant-leave --scope hq --tenure 12m --days 15", "跨季度作废", "可能", "尚未确认"]
+must_preserve_semantic: ["仅对总部在职满 12 个月的正式员工，且限定出现在被限定内容之前", "可能与编制变化有关，但尚未确认"]
+must_remove: []
+must_not_add: [{kind: causal_marker}]
+judge_rubric: 「仅对总部在职满 12 个月的正式员工」不得删也不得放到句末；不确定不得改成确定。

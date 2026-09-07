@@ -1,0 +1,20 @@
+id: ALL-PROT-004
+lang: both
+category: protection
+title: 不确定不得说成确定
+criterion: 原文表达不确定的词（可能、大概、据说、也许、尚未、我不太确定；might、seems、not sure）在改写稿里逐个找回来。被删掉，或被换成更强的说法（显然、必然、will、clearly），即命中。
+fix: 补回原文的限定词；分不清是保留语还是套话连接词时保留。
+pass_when: 同一句里保留语与绝对化表述自相矛盾时可以删掉那个矛盾的保留语。多层保留语堆叠（could potentially possibly）先压成一层。
+known_misses: 只覆盖词一级的限定。原文靠句式表达犹疑（反问、条件从句）时本条查不到，那属于作者声口。
+examples:
+  - good: 原文「可能与天气有关」，改写后仍是「可能与天气有关」。
+  - bad: 改成「与天气有关」。
+    why: 删掉「可能」，推测变成了断言。
+detector:
+  kind: count
+  lexicon: qualifiers
+severity: 1
+frequency: null
+source:
+  decision: adopted
+  from: [protection.md]

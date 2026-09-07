@@ -1,0 +1,13 @@
+id: 26
+lang: zh
+mode: rewrite
+class: minimal_edit
+request: 帮我去一下 AI 味
+body: |-
+  这次压测跑了六轮。第一轮和第二轮的数据我们丢掉了，因为压测机自己的 CPU 打满了，测出来的是压测机的上限，不是服务的上限。后面四轮的 QPS 分别是 4,200、4,350、4,180、4,290。平均 4,255，方差不大，我们认为这个数就是当前配置下的天花板了。要再往上，得先把连接池从 64 调到 128，那是另一件事。
+axes: {strength: rewrite, scope: structural}
+must_preserve: ["4,200", "4,350", "4,180", "4,290", "4,255", "64", "128", "那是另一件事", "我们认为", "天花板", "压测机自己的 CPU 打满了"]
+must_remove: []
+must_not_add: [{kind: causal_marker}]
+minimal_edit_tolerance: 0.05
+judge_rubric: 执行强度上限样本。改动应很少或原样返回；四个 QPS 数字不得概括；「我们认为」不得改成确定；不得为了句长变化重排整段。

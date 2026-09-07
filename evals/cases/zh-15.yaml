@@ -1,0 +1,12 @@
+id: 15
+lang: zh
+mode: rewrite
+class: fact_preserve
+request: 帮我把这段接口说明改得自然一点
+body: |-
+  本接口用于查询任务状态。请求需要在 header 里带上 X-Request-Id，该字段为必填。响应体中的 status 字段有三个取值：pending、running、failed，其中 failed 时会额外返回 error_code。需要注意的是，retry_count 字段统计的是自动重试次数，不包含用户手动触发的重试。若 config 中的 key 未配置，服务端会使用默认的 log_level=info。
+axes: {strength: rewrite, scope: structural}
+must_preserve: ["X-Request-Id", "status", "pending", "running", "failed", "error_code", "retry_count", "config", "key", "log_level=info", "不包含用户手动触发的重试"]
+must_remove: ["需要注意的是"]
+must_not_add: [{kind: first_person}]
+judge_rubric: 字段名、参数名逐字保护，不译成中文、不改大小写与下划线；retry_count 的口径不得删或弱化。

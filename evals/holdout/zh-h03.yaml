@@ -1,0 +1,19 @@
+id: 103
+lang: zh
+mode: rewrite
+class: boilerplate
+request: 这是要放进 README 的，帮我去 AI 味，别删句
+body: |-
+  ## 快速开始
+
+  在当今数据驱动的时代，一个高效、可靠的日志采集工具是不可或缺的。本项目致力于为开发者提供一站式的日志采集解决方案。
+
+  安装只需一条命令：`pip install logtap`。安装完成后，运行 `logtap init` 会在当前目录生成 `logtap.yaml`，默认只采集 `*.log` 文件，不采集子目录。需要注意的是，如果目录下有超过 10,000 个文件，首次扫描可能需要几分钟。
+
+  我们相信，logtap 将成为您日志管理旅程中值得信赖的伙伴。
+axes: {strength: rewrite, scope: bounded}
+must_preserve: ["pip install logtap", "logtap init", "logtap.yaml", "*.log", "不采集子目录", "10,000", "可能需要几分钟", "## 快速开始"]
+must_remove: ["在当今", "不可或缺", "致力于", "一站式", "需要注意的是", "值得信赖的伙伴"]
+must_not_add: [{kind: first_person}, {kind: number}]
+forbidden_in_output: ["本项目致力于"]
+judge_rubric: 用户说「别删句」落 bounded：首段和末段的整句空话进待确认删除清单而不是直接删；行内代码逐字不动；「不采集子目录」「可能需要几分钟」两个限定不得丢。标题不动。

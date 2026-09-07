@@ -1,0 +1,13 @@
+id: 18
+lang: zh
+mode: rewrite
+class: fact_preserve
+request: 帮我把这段改得像人写的
+body: |-
+  调度器会在任务超时后把它重新入队，最多重试三次。这次事故中，重试被平台组关掉了，因为上一周他们排查另一个问题时临时改了配置，改完没有恢复。业务组当天上线的新版本没有做幂等，重试恢复之后产生了重复扣款。财务组在第二天的对账里发现了 37 笔重复记录并做了冲正。
+axes: {strength: rewrite, scope: structural}
+must_preserve: ["调度器", "平台组", "业务组", "财务组", "37 笔", "三次"]
+must_remove: []
+must_not_add: [{kind: first_person}]
+forbidden_in_output: ["配置被修改", "重试被关闭", "团队关掉"]
+judge_rubric: 责任主体不得互换或隐去；不得按「指名行动者」补一个原文没有的施事者。

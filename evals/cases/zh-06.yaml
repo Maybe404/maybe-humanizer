@@ -1,0 +1,14 @@
+id: 6
+lang: zh
+mode: rewrite
+class: boilerplate
+request: 这段技术说明太啰嗦了，帮我改写一下
+body: |-
+  值得注意的是，在当前的架构背景下，基于对性能的综合考量，通过一系列的优化措施，我们将 p99 延迟从 900 毫秒降低到了 40 毫秒。需要指出的是，该优化仅在开启了 `--enable-cache` 参数时生效，且不适用于 v2.3 之前的版本。这一成果充分彰显了团队精益求精的工匠精神。
+axes: {strength: rewrite, scope: structural}
+must_preserve: ["900 毫秒", "40 毫秒", "--enable-cache", "v2.3"]
+must_preserve_semantic: ["仅在开启参数时生效", "不适用于 v2.3 之前的版本"]
+must_remove: ["值得注意的是", "在当前的架构背景下", "综合考量", "一系列的优化措施", "需要指出的是", "充分彰显", "工匠精神"]
+must_not_add: [{kind: first_person}, {kind: causal_marker}]
+sentence_count: {min: 2, max: 4}
+judge_rubric: 不得把最后一句换成另一句意义拔高的话。

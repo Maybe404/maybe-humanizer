@@ -1,0 +1,13 @@
+id: 14
+lang: zh
+mode: rewrite
+class: mode_axes
+request: 帮我校对一下这段，只改错字
+body: |-
+  我们在 2024 年 Q3 上线了新的检索层，把平均响应从 1.2 秒压到 300 毫秒。不过这个数字只在缓存命中时成立，缓存未命中的情况我们还没测。测试环景的数据可能不具代表性。
+axes: {strength: proofread, scope: structural}
+must_preserve: ["2024 年 Q3", "1.2 秒", "300 毫秒", "只在缓存命中时成立", "还没测", "可能不具代表性", "不过", "测试环境"]
+must_remove: ["测试环景"]
+must_not_add: [{kind: causal_marker}]
+sentence_count: {min: 3, max: 3}
+judge_rubric: 校对档只改「环景」为「环境」，其余一字不动；不调句序、不合并、不删「不过」。

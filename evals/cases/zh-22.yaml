@@ -1,0 +1,14 @@
+id: 22
+lang: zh
+mode: rewrite
+class: mode_axes
+request: 帮我把这段去去 AI 味，但一句都别删，句子数量要和原文一样
+body: |-
+  毫无疑问，这次重构是一次意义深远的尝试。我们把鉴权中间件从三处重复实现收敛成了一处。收敛之后，新增一个受保护接口只需要改一行配置。坦率地讲，这个改动本身并不复杂。真正花时间的是把三处实现的差异逐条对齐，这部分做了两周。目前线上跑了一个月，没有出现鉴权相关的告警。
+axes: {strength: rewrite, scope: in-place}
+must_preserve: ["三处", "一处", "一行配置", "两周", "一个月", "没有出现鉴权相关的告警"]
+must_remove: ["毫无疑问", "意义深远", "坦率地讲"]
+must_not_add: [{kind: first_person}]
+sentence_count: {min: 6, max: 6}
+length_ratio_min: 0.85
+judge_rubric: 第一句在句内降回普通判断并保留命题；不得删句、合并、重排。

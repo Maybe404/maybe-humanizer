@@ -1,0 +1,12 @@
+id: 102
+lang: zh
+mode: rewrite
+class: minimal_edit
+request: 帮我改自然点
+body: |-
+  昨天把那个报表任务从 cron 挪到了调度平台上。挪之前每天早上八点跑，偶尔会和备份撞车，撞上就得手动重跑，一个月大概两三次。挪完之后调度平台会等备份跑完再起，昨晚试了一次，没撞。就一个小坑：平台的时区默认是 UTC，我第一次配成了下午四点，改过来了。
+axes: {strength: rewrite, scope: structural}
+must_preserve: ["八点", "两三次", "UTC", "下午四点", "撞车", "就一个小坑"]
+must_remove: []
+must_not_add: [{kind: causal_marker}, {kind: first_person}]
+judge_rubric: 真人原文，只允许标点级改动或原样返回；「就一个小坑」「撞车」这类口语不得改书面；「大概两三次」不得改成确定次数。

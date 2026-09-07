@@ -1,0 +1,13 @@
+id: 104
+lang: zh
+mode: review
+class: mode_axes
+request: 帮我看看这段哪里像 AI 写的，先别改
+body: |-
+  在数字化转型的浪潮下，企业对于知识管理的需求日益凸显。首先，知识沉淀能够有效降低沟通成本；其次，它有助于新员工快速融入；最后，它为组织决策提供了坚实的数据支撑。不难看出，知识管理已经不再是一个可选项，而是企业必须面对的核心命题。展望未来，随着 AI 技术的持续赋能，知识管理必将迎来全新的发展机遇。
+axes: {strength: rewrite, scope: structural}
+must_preserve: []
+must_remove: []
+expected_verdict: 命中模式
+forbidden_in_report: ["AI 写的", "%", "概率"]
+judge_rubric: 只列问题不改写；证据带规则 id、原句、改法；条数不超过六条；不给身份结论。

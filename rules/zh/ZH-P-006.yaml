@@ -1,0 +1,20 @@
+id: ZH-P-006
+lang: zh
+category: pattern
+title: 空洞乐观的结尾
+criterion: 结尾拉高到空洞乐观即命中：让我们拭目以待、未来一片光明、必将产生深远影响、前景无限、值得期待、共同书写新篇章。问这一段给出了什么前文没有的具体内容。
+fix: 换成一个具体的下一步、一个待解问题或一句真实判断；原文没有就删掉，不补。
+pass_when: 作者自己的乐观判断带着依据时保留，不得改掉作者已有的态度。贺词、致辞里的收束语是格式要求。
+known_misses: 每段都以一句价值判断收尾的情况归 ZH-P-013 和 ZH-P-032。
+examples:
+  - good: 下一步要解决冷启动那 800 毫秒的延迟。搞不定的话这套方案就得推倒重来。
+  - bad: 我们有理由相信，在各方的共同努力下，未来必将一片光明，让我们拭目以待。
+    why: 整句是口号，没有一个下一步、一个问题或一句判断。
+detector:
+  kind: lexicon
+  lexicon: ZH-P-006
+severity: 2
+frequency: null
+source:
+  decision: adopted
+  from: [patterns-zh.md]

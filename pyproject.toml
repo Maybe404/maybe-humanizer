@@ -1,0 +1,42 @@
+[project]
+name = "maybe-humanizer"
+version = "0.1.0"
+description = "去 AI 味改写引擎：保护、编号、补丁、核验、报告；模型只在三个位置出场"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["pyyaml>=6.0"]
+
+[project.scripts]
+humanizer = "engine.cli:main"
+
+[dependency-groups]
+dev = [{ include-group = "lint" }, { include-group = "test" }]
+lint = ["ruff", "ty"]
+test = ["pytest", "pytest-cov"]
+
+[build-system]
+requires = ["uv_build>=0.8"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "engine"
+module-root = ""
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = ["D", "COM812", "ISC001", "T201", "PLR2004", "C901", "PLR0912", "PLR0915", "PLR0913", "RUF001", "RUF002", "RUF003", "E501", "S603", "S607", "FBT001", "FBT002", "FBT003", "ERA001", "CPY001", "N812", "TC001", "TC003", "PLC0415", "PLW2901", "PERF401", "PLR0917", "RET504", "S101"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101", "INP001", "PLR2004", "ANN201", "PT018", "ANN001"]
+"evals/*" = ["INP001"]
+"scripts/*" = ["INP001"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ty.environment]
+python-version = "3.11"

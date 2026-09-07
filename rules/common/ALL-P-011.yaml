@@ -1,0 +1,20 @@
+id: ALL-P-011
+lang: both
+category: pattern
+title: 不把同一个意思绕几遍
+criterion: 用「换句话说」「也就是说」「简单来说」「In other words」引出的后一句，相对前一句新增了什么信息。答不上来即命中。
+fix: 保留最清楚的一版，删掉重复的转述。
+pass_when: 后一句确实换了抽象层级，或者给出了前一句没有的限定、数字、例子时保留。教学类文本里先给结论再展开一遍是体裁要求。
+known_misses: 跨段的重复转述和不带引出语的重复转述查不出来。
+examples:
+  - good: 它把导出报表的时间从十分钟压到了一分钟。
+  - bad: 它能提升效率。换句话说，它让工作更快。也就是说，它节省了时间。
+    why: 三句一个意思，后两句没有新增任何信息。
+detector:
+  kind: lexicon
+  lexicon: ALL-P-011
+severity: 3
+frequency: null
+source:
+  decision: adopted
+  from: [patterns-common.md]

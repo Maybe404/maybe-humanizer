@@ -1,0 +1,12 @@
+id: 2
+lang: zh
+mode: rewrite
+class: minimal_edit
+request: 这段读着有点乱，帮我看看要不要改
+body: |-
+  我们试过微服务，团队七个人。光维护那套服务发现就吃掉两个人，剩下五个人写业务。后来砍回单体，部署慢了点，但没人再半夜起来看服务网格了。要说后悔吗，也不完全后悔，至少知道了它不适合我们这个规模。
+axes: {strength: rewrite, scope: structural}
+must_preserve: ["七个人", "两个人", "五个人", "也不完全后悔", "砍回单体"]
+must_remove: []
+must_not_add: [{kind: causal_marker}, {kind: first_person}]
+judge_rubric: 「要说后悔吗，也不完全后悔」不得改成明确的肯定或否定立场。措辞「帮我看看要不要改」落审稿档也可接受，那时结论应为「无需编辑」或只列标点级建议。

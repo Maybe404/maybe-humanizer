@@ -1,0 +1,12 @@
+id: 17
+lang: zh
+mode: rewrite
+class: fact_preserve
+request: 帮我把这段故障记录改得读起来顺一点
+body: |-
+  凌晨 1 点 47 分，网关侧开始出现大量 ERROR: connection reset by peer，与此同时上游返回 upstream connect error or disconnect/reset before headers. reset reason: connection termination。在一定程度上，这两条报错指向的是同一个问题。我们抓了 tcpdump，确认 TCP RST 来自后端 Pod 而非中间的 LB。后端日志里 level=warn msg="grace period exceeded" 出现了 214 次。
+axes: {strength: rewrite, scope: structural}
+must_preserve: ["ERROR: connection reset by peer", "upstream connect error or disconnect/reset before headers. reset reason: connection termination", "level=warn msg=\"grace period exceeded\"", "214", "1 点 47 分", "TCP RST"]
+must_remove: ["与此同时", "在一定程度上"]
+must_not_add: [{kind: causal_marker}]
+judge_rubric: 报错原文不得翻译或合并；「这两条报错指向的是同一个问题」这句原文带保留的判断不得写成确定结论；214 次不得写成「多次」。

@@ -1,0 +1,20 @@
+id: ZH-P-004
+lang: zh
+category: pattern
+title: 万能空话开场
+criterion: 开场句换个主语就能套到任何题目上即命中：随着……的飞速发展、在当今……的时代、前所未有的深刻变革。
+fix: 从最具体的那句话开始，一个数字、一个场景、一个判断都行。原文没有具体内容就删掉开场句，不补。
+pass_when: 确实在写行业综述、开头那句就是本文的主张时保留，判据是这句话给出了原文别处没有的信息。
+known_misses: 正文中段出现的万能句不在本条，按 ALL-M-001 可移植性测试单独判。
+examples:
+  - good: 上周我用模型重写了一份接口文档，母语审稿人五秒就退回来了。
+  - bad: 随着人工智能的飞速发展，各行各业正在经历前所未有的深刻变革。
+    why: 把「人工智能」换成任何别的词这句话照样成立。
+detector:
+  kind: lexicon
+  lexicon: ZH-P-004
+severity: 2
+frequency: null
+source:
+  decision: adopted
+  from: [patterns-zh.md]

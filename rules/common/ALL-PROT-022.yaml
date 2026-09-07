@@ -1,0 +1,18 @@
+id: ALL-PROT-022
+lang: both
+category: protection
+title: 责任主体不得改变
+criterion: 原文每一句写明了谁做的、谁负责、谁受影响，改写稿里这三项必须还是同一方。把有主语的陈述改成被动式或无主句而隐去主体，即命中。多个主体各有各的动作时，只属于某一方的目标不得并给另一方。
+fix: 把主体写回去，用原文的那一方。
+pass_when: 原文没有写执行者时不要求补一个出来，补一个就是新增。技术文档里真正执行动作的是系统时保留系统主语。
+known_misses: 主体没被改、而它的动作或目标被换掉的，按 ALL-PROT-023 的方向和强度两项判。
+examples:
+  - good: 原文「配置是运维在周五改的」，改写后仍写明是运维改的。
+  - bad: 改成「配置在周五被调整过」。
+    why: 责任主体被隐去，读者无法判断是谁改的。
+detector: null
+severity: 1
+frequency: null
+source:
+  decision: adopted
+  from: [protection.md]

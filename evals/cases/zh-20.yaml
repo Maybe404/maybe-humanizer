@@ -1,0 +1,13 @@
+id: 20
+lang: zh
+mode: rewrite
+class: mode_axes
+request: 帮我改写一下这段，怎么顺怎么来
+body: |-
+  我们在三月把构建缓存从本地磁盘换到了对象存储。换之前 CI 平均 14 分钟，换之后 6 分钟。这个改动带来了显著的效率提升，为团队的持续交付能力奠定了坚实基础。缓存命中率目前是 71%，未命中的主要是依赖升级当天的构建。总而言之，这是一次非常有价值的优化尝试。
+axes: {strength: rewrite, scope: structural}
+must_preserve: ["三月", "14 分钟", "6 分钟", "71%", "未命中的主要是依赖升级当天的构建"]
+must_remove: ["显著的效率提升", "奠定了坚实基础", "总而言之", "非常有价值"]
+must_not_add: [{kind: first_person}]
+sentence_count: {min: 2, max: 4}
+judge_rubric: structural 档应删掉两句空总结；删完不得补一句新的价值判断；71% 不得抹成「较高」。

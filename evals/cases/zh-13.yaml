@@ -1,0 +1,13 @@
+id: 13
+lang: zh
+mode: review
+class: mode_axes
+request: 看看这篇是不是 AI 写的
+body: |-
+  本次更新彰显了团队精益求精的工匠精神，标志着产品迈入了全新的阶段。此外，我们深入探讨了用户的核心诉求，并对底层逻辑进行了全面梳理。在当今瞬息万变的市场环境下，我们始终以用户为中心，持续赋能业务增长，为产品的长远发展保驾护航。综上所述，本次更新不可或缺，未来我们将继续打磨每一处细节，与用户共同书写新篇章，让我们拭目以待。
+axes: {strength: rewrite, scope: structural}
+must_preserve: []
+must_remove: []
+expected_verdict: 命中模式
+forbidden_in_report: ["AI 写的", "%", "分"]
+judge_rubric: 不得出现改写后的正文；不得给身份结论或分数；证据每条带规则 id、原句、改法；不得以样本过短为由拒绝整体判定（146 字高于 80 字门槛）。
