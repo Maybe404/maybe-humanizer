@@ -1,0 +1,11 @@
+status: pass_with_signals
+hard_failures: []
+signals:
+- kind: length_below_floor
+  before: 98
+  after: 31
+rescan:
+  remaining: []
+  introduced: []
+round: 1
+output_text: 我们把 p99 延迟从 900 毫秒压到了 40 毫秒。这只在开启 `--enable-cache` 参数时生效，v2.3 之前的版本不适用。

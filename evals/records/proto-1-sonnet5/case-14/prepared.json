@@ -1,0 +1,107 @@
+{
+ "lang": "zh",
+ "original": "我们在 2024 年 Q3 上线了新的检索层，把平均响应从 1.2 秒压到 300 毫秒。不过这个数字只在缓存命中时成立，缓存未命中的情况我们还没测。测试环景的数据可能不具代表性。",
+ "protected_text": "我们在 2024 年 Q3 上线了新的检索层，把平均响应从 1.2 秒压到 300 毫秒。不过这个数字只在缓存命中时成立，缓存未命中的情况我们还没测。测试环景的数据可能不具代表性。",
+ "placeholders": [],
+ "sentences": [
+  {
+   "id": 1,
+   "text": "我们在 2024 年 Q3 上线了新的检索层，把平均响应从 1.2 秒压到 300 毫秒。",
+   "sep": "",
+   "paragraph": 1,
+   "protected": false
+  },
+  {
+   "id": 2,
+   "text": "不过这个数字只在缓存命中时成立，缓存未命中的情况我们还没测。",
+   "sep": "",
+   "paragraph": 1,
+   "protected": false
+  },
+  {
+   "id": 3,
+   "text": "测试环景的数据可能不具代表性。",
+   "sep": "",
+   "paragraph": 1,
+   "protected": false
+  }
+ ],
+ "literal": [
+  {
+   "text": "2024 年",
+   "kind": "date",
+   "sentence": 1
+  },
+  {
+   "text": "Q3",
+   "kind": "date",
+   "sentence": 1
+  },
+  {
+   "text": "1.2",
+   "kind": "version",
+   "sentence": 1
+  },
+  {
+   "text": "1.2 秒",
+   "kind": "number",
+   "sentence": 1
+  },
+  {
+   "text": "300 毫秒",
+   "kind": "number",
+   "sentence": 1
+  }
+ ],
+ "semantic": [
+  {
+   "text": "还没",
+   "kind": "qualifier",
+   "sentence": 2
+  },
+  {
+   "text": "只在",
+   "kind": "qualifier",
+   "sentence": 2
+  },
+  {
+   "text": "不",
+   "kind": "negation",
+   "sentence": 2
+  },
+  {
+   "text": "没",
+   "kind": "negation",
+   "sentence": 2
+  },
+  {
+   "text": "未",
+   "kind": "negation",
+   "sentence": 2
+  },
+  {
+   "text": "可能",
+   "kind": "qualifier",
+   "sentence": 3
+  },
+  {
+   "text": "不",
+   "kind": "negation",
+   "sentence": 3
+  }
+ ],
+ "axes": {
+  "mode": "rewrite",
+  "strength": "proofread",
+  "scope": "structural",
+  "genre": "通用长文",
+  "genre_clue": "无线索命中",
+  "voice": "不启用",
+  "short_text": true,
+  "user_specified": [
+   "strength"
+  ]
+ },
+ "triage_line": "按通用长文处理，依据是无线索命中；模式：改写；力度：校对；范围：structural；声口：不启用。要按别的体裁可以说一声。",
+ "stop_reason": null
+}

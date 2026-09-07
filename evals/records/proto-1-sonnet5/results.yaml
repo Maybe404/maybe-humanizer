@@ -1,0 +1,289 @@
+run: proto-1-sonnet5
+date: '2026-09-07'
+model: claude-sonnet-5
+temperature: not controllable via claude -p
+cases:
+- id: 6
+  class: boilerplate
+  rounds: 1
+  status: pass
+  failed: []
+  signals:
+  - length_below_floor
+  judge:
+  - block: '[1]'
+    result: 通过
+    item: ''
+  - block: '[2]'
+    result: 通过
+    item: ''
+  - block: '[3]'
+    result: 需作者确认
+    item: ''
+  manual:
+    must_preserve_semantic:
+    - 仅在开启参数时生效
+    - 不适用于 v2.3 之前的版本
+    judge_rubric: 不得把最后一句换成另一句意义拔高的话。
+  checks:
+  - check: delivered
+    pass: true
+    detail: pass_with_signals
+  - check: must_preserve:900 毫秒
+    pass: true
+    detail: ''
+  - check: must_preserve:40 毫秒
+    pass: true
+    detail: ''
+  - check: must_preserve:--enable-cache
+    pass: true
+    detail: ''
+  - check: must_preserve:v2.3
+    pass: true
+    detail: ''
+  - check: must_remove:值得注意的是
+    pass: true
+    detail: ''
+  - check: must_remove:在当前的架构背景下
+    pass: true
+    detail: ''
+  - check: must_remove:综合考量
+    pass: true
+    detail: ''
+  - check: must_remove:一系列的优化措施
+    pass: true
+    detail: ''
+  - check: must_remove:需要指出的是
+    pass: true
+    detail: ''
+  - check: must_remove:充分彰显
+    pass: true
+    detail: ''
+  - check: must_remove:工匠精神
+    pass: true
+    detail: ''
+  - check: must_not_add:first_person
+    pass: true
+    detail: ''
+  - check: must_not_add:causal_marker
+    pass: true
+    detail: ''
+  - check: sentence_count
+    pass: true
+    detail: '2'
+  - check: no_hard_failures
+    pass: true
+    detail: ''
+  - check: not_partial
+    pass: true
+    detail: ''
+- id: 13
+  class: mode_axes
+  rounds: 1
+  status: pass
+  failed: []
+  signals: []
+  judge: []
+  manual:
+    must_preserve_semantic: null
+    judge_rubric: 不得出现改写后的正文；不得给身份结论或分数；证据每条带规则 id、原句、改法；不得以样本过短为由拒绝整体判定（146 字高于 80
+      字门槛）。
+  checks:
+  - check: mode_is_review
+    pass: true
+    detail: review
+  - check: expected_verdict
+    pass: true
+    detail: 命中模式
+  - check: forbidden_in_report:AI 写的
+    pass: true
+    detail: ''
+  - check: forbidden_in_report:%
+    pass: true
+    detail: ''
+  - check: forbidden_in_report:分
+    pass: true
+    detail: ''
+  - check: no_rewrite_delivered
+    pass: true
+    detail: ''
+- id: 14
+  class: mode_axes
+  rounds: 1
+  status: pass
+  failed: []
+  signals: []
+  judge:
+  - block: '[3]'
+    result: 通过
+    item: ''
+  manual:
+    must_preserve_semantic: null
+    judge_rubric: 校对档只改「环景」为「环境」，其余一字不动；不调句序、不合并、不删「不过」。
+  checks:
+  - check: delivered
+    pass: true
+    detail: pass
+  - check: must_preserve:2024 年 Q3
+    pass: true
+    detail: ''
+  - check: must_preserve:1.2 秒
+    pass: true
+    detail: ''
+  - check: must_preserve:300 毫秒
+    pass: true
+    detail: ''
+  - check: must_preserve:只在缓存命中时成立
+    pass: true
+    detail: ''
+  - check: must_preserve:还没测
+    pass: true
+    detail: ''
+  - check: must_preserve:可能不具代表性
+    pass: true
+    detail: ''
+  - check: must_preserve:不过
+    pass: true
+    detail: ''
+  - check: must_preserve:测试环境
+    pass: true
+    detail: ''
+  - check: must_remove:测试环景
+    pass: true
+    detail: ''
+  - check: must_not_add:causal_marker
+    pass: true
+    detail: ''
+  - check: sentence_count
+    pass: true
+    detail: '3'
+  - check: no_hard_failures
+    pass: true
+    detail: ''
+  - check: not_partial
+    pass: true
+    detail: ''
+- id: 20
+  class: mode_axes
+  rounds: 1
+  status: pass
+  failed: []
+  signals:
+  - negation_changed
+  - length_below_floor
+  judge:
+  - block: '[3]'
+    result: 需作者确认
+    item: ''
+  - block: '[5]'
+    result: 需作者确认
+    item: ''
+  manual:
+    must_preserve_semantic: null
+    judge_rubric: structural 档应删掉两句空总结；删完不得补一句新的价值判断；71% 不得抹成「较高」。
+  checks:
+  - check: delivered
+    pass: true
+    detail: pass_with_signals
+  - check: must_preserve:三月
+    pass: true
+    detail: ''
+  - check: must_preserve:14 分钟
+    pass: true
+    detail: ''
+  - check: must_preserve:6 分钟
+    pass: true
+    detail: ''
+  - check: must_preserve:71%
+    pass: true
+    detail: ''
+  - check: must_preserve:未命中的主要是依赖升级当天的构建
+    pass: true
+    detail: ''
+  - check: must_remove:显著的效率提升
+    pass: true
+    detail: ''
+  - check: must_remove:奠定了坚实基础
+    pass: true
+    detail: ''
+  - check: must_remove:总而言之
+    pass: true
+    detail: ''
+  - check: must_remove:非常有价值
+    pass: true
+    detail: ''
+  - check: must_not_add:first_person
+    pass: true
+    detail: ''
+  - check: sentence_count
+    pass: true
+    detail: '3'
+  - check: no_hard_failures
+    pass: true
+    detail: ''
+  - check: not_partial
+    pass: true
+    detail: ''
+- id: 22
+  class: mode_axes
+  rounds: 1
+  status: pass
+  failed: []
+  signals:
+  - negation_changed
+  judge:
+  - block: '[1]'
+    result: 需作者确认
+    item: ''
+  - block: '[4]'
+    result: 通过
+    item: ''
+  manual:
+    must_preserve_semantic: null
+    judge_rubric: 第一句在句内降回普通判断并保留命题；不得删句、合并、重排。
+  checks:
+  - check: delivered
+    pass: true
+    detail: pass_with_signals
+  - check: must_preserve:三处
+    pass: true
+    detail: ''
+  - check: must_preserve:一处
+    pass: true
+    detail: ''
+  - check: must_preserve:一行配置
+    pass: true
+    detail: ''
+  - check: must_preserve:两周
+    pass: true
+    detail: ''
+  - check: must_preserve:一个月
+    pass: true
+    detail: ''
+  - check: must_preserve:没有出现鉴权相关的告警
+    pass: true
+    detail: ''
+  - check: must_remove:毫无疑问
+    pass: true
+    detail: ''
+  - check: must_remove:意义深远
+    pass: true
+    detail: ''
+  - check: must_remove:坦率地讲
+    pass: true
+    detail: ''
+  - check: must_not_add:first_person
+    pass: true
+    detail: ''
+  - check: sentence_count
+    pass: true
+    detail: '6'
+  - check: length_ratio_min
+    pass: true
+    detail: '0.88'
+  - check: no_hard_failures
+    pass: true
+    detail: ''
+  - check: not_partial
+    pass: true
+    detail: ''

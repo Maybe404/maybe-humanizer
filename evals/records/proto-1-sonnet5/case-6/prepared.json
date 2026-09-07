@@ -1,0 +1,77 @@
+{
+ "lang": "zh",
+ "original": "值得注意的是，在当前的架构背景下，基于对性能的综合考量，通过一系列的优化措施，我们将 p99 延迟从 900 毫秒降低到了 40 毫秒。需要指出的是，该优化仅在开启了 `--enable-cache` 参数时生效，且不适用于 v2.3 之前的版本。这一成果充分彰显了团队精益求精的工匠精神。",
+ "protected_text": "值得注意的是，在当前的架构背景下，基于对性能的综合考量，通过一系列的优化措施，我们将 p99 延迟从 900 毫秒降低到了 40 毫秒。需要指出的是，该优化仅在开启了 ⟦CODE-1⟧ 参数时生效，且不适用于 v2.3 之前的版本。这一成果充分彰显了团队精益求精的工匠精神。",
+ "placeholders": [
+  {
+   "id": "CODE-1",
+   "kind": "CODE",
+   "text": "`--enable-cache`",
+   "sentence": 2
+  }
+ ],
+ "sentences": [
+  {
+   "id": 1,
+   "text": "值得注意的是，在当前的架构背景下，基于对性能的综合考量，通过一系列的优化措施，我们将 p99 延迟从 900 毫秒降低到了 40 毫秒。",
+   "sep": "",
+   "paragraph": 1,
+   "protected": false
+  },
+  {
+   "id": 2,
+   "text": "需要指出的是，该优化仅在开启了 ⟦CODE-1⟧ 参数时生效，且不适用于 v2.3 之前的版本。",
+   "sep": "",
+   "paragraph": 1,
+   "protected": false
+  },
+  {
+   "id": 3,
+   "text": "这一成果充分彰显了团队精益求精的工匠精神。",
+   "sep": "",
+   "paragraph": 1,
+   "protected": false
+  }
+ ],
+ "literal": [
+  {
+   "text": "900 毫秒",
+   "kind": "number",
+   "sentence": 1
+  },
+  {
+   "text": "40 毫秒",
+   "kind": "number",
+   "sentence": 1
+  },
+  {
+   "text": "v2.3",
+   "kind": "version",
+   "sentence": 2
+  }
+ ],
+ "semantic": [
+  {
+   "text": "仅",
+   "kind": "qualifier",
+   "sentence": 2
+  },
+  {
+   "text": "不",
+   "kind": "negation",
+   "sentence": 2
+  }
+ ],
+ "axes": {
+  "mode": "rewrite",
+  "strength": "rewrite",
+  "scope": "structural",
+  "genre": "技术长文",
+  "genre_clue": "正文含代码块或行内代码",
+  "voice": "不启用",
+  "short_text": false,
+  "user_specified": []
+ },
+ "triage_line": "按技术长文处理，依据是正文含代码块或行内代码；模式：改写；力度：改写；范围：structural；声口：不启用。要按别的体裁可以说一声。",
+ "stop_reason": null
+}

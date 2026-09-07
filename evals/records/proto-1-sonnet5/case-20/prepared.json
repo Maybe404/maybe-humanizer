@@ -1,0 +1,89 @@
+{
+ "lang": "zh",
+ "original": "我们在三月把构建缓存从本地磁盘换到了对象存储。换之前 CI 平均 14 分钟，换之后 6 分钟。这个改动带来了显著的效率提升，为团队的持续交付能力奠定了坚实基础。缓存命中率目前是 71%，未命中的主要是依赖升级当天的构建。总而言之，这是一次非常有价值的优化尝试。",
+ "protected_text": "我们在三月把构建缓存从本地磁盘换到了对象存储。换之前 CI 平均 14 分钟，换之后 6 分钟。这个改动带来了显著的效率提升，为团队的持续交付能力奠定了坚实基础。缓存命中率目前是 71%，未命中的主要是依赖升级当天的构建。总而言之，这是一次非常有价值的优化尝试。",
+ "placeholders": [],
+ "sentences": [
+  {
+   "id": 1,
+   "text": "我们在三月把构建缓存从本地磁盘换到了对象存储。",
+   "sep": "",
+   "paragraph": 1,
+   "protected": false
+  },
+  {
+   "id": 2,
+   "text": "换之前 CI 平均 14 分钟，换之后 6 分钟。",
+   "sep": "",
+   "paragraph": 1,
+   "protected": false
+  },
+  {
+   "id": 3,
+   "text": "这个改动带来了显著的效率提升，为团队的持续交付能力奠定了坚实基础。",
+   "sep": "",
+   "paragraph": 1,
+   "protected": false
+  },
+  {
+   "id": 4,
+   "text": "缓存命中率目前是 71%，未命中的主要是依赖升级当天的构建。",
+   "sep": "",
+   "paragraph": 1,
+   "protected": false
+  },
+  {
+   "id": 5,
+   "text": "总而言之，这是一次非常有价值的优化尝试。",
+   "sep": "",
+   "paragraph": 1,
+   "protected": false
+  }
+ ],
+ "literal": [
+  {
+   "text": "14 分钟",
+   "kind": "number",
+   "sentence": 2
+  },
+  {
+   "text": "6 分钟",
+   "kind": "number",
+   "sentence": 2
+  },
+  {
+   "text": "71 %",
+   "kind": "number",
+   "sentence": 4
+  }
+ ],
+ "semantic": [
+  {
+   "text": "目前",
+   "kind": "qualifier",
+   "sentence": 4
+  },
+  {
+   "text": "未",
+   "kind": "negation",
+   "sentence": 4
+  },
+  {
+   "text": "非",
+   "kind": "negation",
+   "sentence": 5
+  }
+ ],
+ "axes": {
+  "mode": "rewrite",
+  "strength": "rewrite",
+  "scope": "structural",
+  "genre": "通用长文",
+  "genre_clue": "无线索命中",
+  "voice": "不启用",
+  "short_text": false,
+  "user_specified": []
+ },
+ "triage_line": "按通用长文处理，依据是无线索命中；模式：改写；力度：改写；范围：structural；声口：不启用。要按别的体裁可以说一声。",
+ "stop_reason": null
+}

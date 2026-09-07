@@ -1,0 +1,14 @@
+status: pass_with_signals
+hard_failures: []
+signals:
+- kind: negation_changed
+  before: 2
+  after: 1
+- kind: length_below_floor
+  before: 107
+  after: 58
+rescan:
+  remaining: []
+  introduced: []
+round: 1
+output_text: 我们在三月把构建缓存从本地磁盘换到了对象存储。换之前 CI 平均 14 分钟，换之后 6 分钟。缓存命中率目前是 71%，未命中的主要是依赖升级当天的构建。

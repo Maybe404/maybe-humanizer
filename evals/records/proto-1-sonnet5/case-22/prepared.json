@@ -1,0 +1,87 @@
+{
+ "lang": "zh",
+ "original": "毫无疑问，这次重构是一次意义深远的尝试。我们把鉴权中间件从三处重复实现收敛成了一处。收敛之后，新增一个受保护接口只需要改一行配置。坦率地讲，这个改动本身并不复杂。真正花时间的是把三处实现的差异逐条对齐，这部分做了两周。目前线上跑了一个月，没有出现鉴权相关的告警。",
+ "protected_text": "毫无疑问，这次重构是一次意义深远的尝试。我们把鉴权中间件从三处重复实现收敛成了一处。收敛之后，新增一个受保护接口只需要改一行配置。坦率地讲，这个改动本身并不复杂。真正花时间的是把三处实现的差异逐条对齐，这部分做了两周。目前线上跑了一个月，没有出现鉴权相关的告警。",
+ "placeholders": [],
+ "sentences": [
+  {
+   "id": 1,
+   "text": "毫无疑问，这次重构是一次意义深远的尝试。",
+   "sep": "",
+   "paragraph": 1,
+   "protected": false
+  },
+  {
+   "id": 2,
+   "text": "我们把鉴权中间件从三处重复实现收敛成了一处。",
+   "sep": "",
+   "paragraph": 1,
+   "protected": false
+  },
+  {
+   "id": 3,
+   "text": "收敛之后，新增一个受保护接口只需要改一行配置。",
+   "sep": "",
+   "paragraph": 1,
+   "protected": false
+  },
+  {
+   "id": 4,
+   "text": "坦率地讲，这个改动本身并不复杂。",
+   "sep": "",
+   "paragraph": 1,
+   "protected": false
+  },
+  {
+   "id": 5,
+   "text": "真正花时间的是把三处实现的差异逐条对齐，这部分做了两周。",
+   "sep": "",
+   "paragraph": 1,
+   "protected": false
+  },
+  {
+   "id": 6,
+   "text": "目前线上跑了一个月，没有出现鉴权相关的告警。",
+   "sep": "",
+   "paragraph": 1,
+   "protected": false
+  }
+ ],
+ "literal": [],
+ "semantic": [
+  {
+   "text": "无",
+   "kind": "negation",
+   "sentence": 1
+  },
+  {
+   "text": "不",
+   "kind": "negation",
+   "sentence": 4
+  },
+  {
+   "text": "目前",
+   "kind": "qualifier",
+   "sentence": 6
+  },
+  {
+   "text": "没",
+   "kind": "negation",
+   "sentence": 6
+  }
+ ],
+ "axes": {
+  "mode": "rewrite",
+  "strength": "rewrite",
+  "scope": "in-place",
+  "genre": "通用长文",
+  "genre_clue": "无线索命中",
+  "voice": "不启用",
+  "short_text": false,
+  "user_specified": [
+   "scope"
+  ]
+ },
+ "triage_line": "按通用长文处理，依据是无线索命中；模式：改写；力度：改写；范围：in-place；声口：不启用。要按别的体裁可以说一声。",
+ "stop_reason": null
+}

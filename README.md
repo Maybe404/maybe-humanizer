@@ -37,4 +37,4 @@ uv run python -m evals.runner --out evals/runs/proto-1       # 跑 eval
 
 ## 状态
 
-阶段 1 原型代码已写，未跑通对照实验。阶段 0 的两份基线未跑。见 `evals/baselines/README.md`。
+阶段 0 的契约修正已合入前一版仓库（commit `991c382`），两份基线未跑。阶段 1 原型单元测试通过，对照实验未做。见 `evals/baselines/README.md`。
