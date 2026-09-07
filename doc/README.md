@@ -9,6 +9,7 @@
 | [03-formats.md](03-formats.md) | 各步骤的输入输出格式：句子编号、占位符、候选清单、台账、补丁、核验报告、eval 用例 schema | 写引擎和写 SKILL.md 的人 |
 | [04-phase0-contract-fixes.md](04-phase0-contract-fixes.md) | 阶段 0 要修的四处契约矛盾，逐处写位置、现状、改法 | 阶段 0 执行者 |
 | [05-editions.md](05-editions.md) | Max、Plus、Air 三个版本的定义与边界，后两个只记录，现在不做 | 规划时看 |
+| [06-progress.md](06-progress.md) | 当前进度：各阶段对照完成定义的状态、已固定的版本、下一步 | 每次开工先看 |
 
 术语（首次出现时括注）：skill（给模型读的任务说明包）、prompt（发给模型的指令）、eval（验收用例）、ledger（台账，模型对每个编号问题的处理记录）、invariant（不变量，改写前后必须原样存在的内容）。
 
