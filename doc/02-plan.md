@@ -110,7 +110,7 @@ maybe-humanizer/
 
 ## 5 规则数据
 
-每条规则的字段：id、语言、类别（protection / process / pattern / genre / measurement / optional）、判据、修法、通过条件、已知会漏掉什么、正反例、检测器定义（可空：词表、正则、计数，含参数）、严重档、各体裁强度（标准 / 放宽 / 加严）、来源与裁决记录。
+每条规则的字段：id、语言、类别（protection / process / pattern / genre / measurement / optional）、判据、修法、通过条件、已知会漏掉什么、正反例、检测器定义（可空：词表、正则、计数，含参数）、严重档 `severity`、语料命中频率 `frequency`（可空，阶段 2 之后填）、各体裁强度（标准 / 放宽 / 加严）、来源与裁决记录。后两个排序字段是 Plus 和 Air 版本的依据，见 05-editions.md。
 
 给模型的卡片只含判据、修法、通过条件、已知会漏掉什么、一组正反例。来源与裁决记录只进给人读的文档。
 
@@ -158,6 +158,8 @@ CI 阻断项：
 没有引擎时，SKILL.md 要求模型：自己按句编号，自己列编号清单，自己填台账，交付时声明"未经机械校验"。它只保证列了的都处理了，不承诺别的。
 
 ## 11 后续更新
+
+- 版本：现在做的是 Max。Plus（模型自主编排的 skill）和 Air（放进 CLAUDE.md 的浓缩提示词）的定义在 05-editions.md，共用同一个规则来源，Max 阶段 2 之后再排。
 
 - 上游来源变化：前一版仓库的 upstream-monitor 继续监控 59 个来源，新条目只作为词表或规则候选进入 rules/，走同一套裁决。
 - 词表更新：改 lexicons/ 的 YAML，跑 evals，通过后重新生成 skill/。
