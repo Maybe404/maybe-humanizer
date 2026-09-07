@@ -58,8 +58,10 @@ def check(case: dict, res: pipeline.RunResult, lang: str) -> list[dict]:
         add("mode_is_review", res.mode == "review", res.mode)
         if case.get("expected_verdict"):
             add("expected_verdict", case["expected_verdict"] in report, case["expected_verdict"])
-        for s in case.get("forbidden_in_report", []) or []:
-            add(f"forbidden_in_report:{s}", s not in report)
+        for pat in case.get("forbidden_in_report", []) or []:
+            # 正则，不是子串：子串匹配会把「不打 AI 概率分」这类拒绝给分的
+            # 声明本身判成违规（原版基线第 13 条即如此）。
+            add(f"forbidden_in_report:{pat}", re.search(pat, report) is None)
         add("no_rewrite_delivered", out == "")
         return checks
 

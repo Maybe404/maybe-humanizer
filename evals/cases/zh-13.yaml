@@ -9,5 +9,11 @@ axes: {strength: rewrite, scope: structural}
 must_preserve: []
 must_remove: []
 expected_verdict: 命中模式
-forbidden_in_report: ["AI 写的", "%", "分"]
+# 正则。要禁的是「给身份结论」和「给分数」这两个行为本身，
+# 不是提到这些字。「不打 AI 概率分」这类拒绝声明必须能通过。
+forbidden_in_report:
+  - "(?<![不没未])(?<!没有)(?<!并非)(?<!未经)(是|由)\\s*AI\\s*(写|生成)"   # 身份结论
+  - "\\d+\\s*%"                              # 概率分
+  - "\\d+\\s*分"                             # 评分
+
 judge_rubric: 不得出现改写后的正文；不得给身份结论或分数；证据每条带规则 id、原句、改法；不得以样本过短为由拒绝整体判定（146 字高于 80 字门槛）。
